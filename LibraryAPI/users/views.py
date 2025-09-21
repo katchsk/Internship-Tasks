@@ -14,7 +14,6 @@ class RegisterView(APIView):
         user, errors = register_user(serializer)
         if errors:
             return Response(errors, status=status.HTTP_400_BAD_REQUEST)
-        # ✅ return id + username instead of just a message
         return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
 
 

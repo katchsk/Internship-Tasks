@@ -14,7 +14,7 @@ class AddReviewView(APIView):
             user=request.user,
             book_id=book_id,
             rating=data.get("rating"),
-            content=data.get("content", "")  # ✅ use content, not comment
+            content=data.get("content", "")
         )
         serializer = ReviewSerializer(review)
         return Response(serializer.data, status=status.HTTP_201_CREATED)

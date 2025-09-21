@@ -22,7 +22,7 @@ def get_tokens(api_client, create_user):
     def login(username="testuser", password="testpass123"):
         user = create_user(username=username, password=password)
         response = api_client.post(
-            "/api/users/api/auth/login/",   # ✅ updated path
+            "/api/users/api/auth/login/",
             {"username": username, "password": password},
             format="json",
         )
@@ -34,7 +34,7 @@ def get_tokens(api_client, create_user):
 @pytest.mark.django_db
 def test_user_registration(api_client):
     response = api_client.post(
-        "/api/users/api/auth/register/",   # ✅ updated path
+        "/api/users/api/auth/register/",
         {"username": "newuser", "password": "newpass123"},
         format="json",
     )
@@ -46,7 +46,7 @@ def test_user_registration(api_client):
 def test_jwt_login(api_client, create_user):
     create_user("loginuser", "loginpass123")
     response = api_client.post(
-        "/api/users/api/auth/login/",   # ✅ updated path
+        "/api/users/api/auth/login/",
         {"username": "loginuser", "password": "loginpass123"},
         format="json",
     )
@@ -88,7 +88,7 @@ def test_create_review(api_client, get_tokens):
         {
             "title": "Book for Review",
             "author": "Review Author",
-            "published_date": "2025-01-01",  # ✅ add this
+            "published_date": "2025-01-01",
         },
         format="json",
     )
